@@ -88,3 +88,15 @@ function getDaysInMonth($offset = 0)
 {
     return cal_days_in_month(CAL_GREGORIAN, date('n') + $offset, date('Y'));
 }
+function addZero($day)
+{
+    if($day < 10)
+        return "0{$day}";
+    return $day;
+}
+function getHashedPass($pass)
+{
+    $pepper = getPepper();
+    $pwd_peppered = hash_hmac("sha256", $pass, $pepper);
+    return password_hash($pwd_peppered, PASSWORD_ARGON2ID);
+}

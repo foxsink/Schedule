@@ -38,12 +38,7 @@ class App extends \vendor\core\base\Controller
             }
             return true;
         }
-        $this->layout = "loggedIn";
         return false;
-    }
-    public function loggedIn()
-    {
-
     }
     public function isLoggedIn()
     {
@@ -54,8 +49,7 @@ class App extends \vendor\core\base\Controller
             $user = $model->findOne($_COOKIE['id']);
             $hashes = $model->findBySQL("SELECT hash FROM hashes WHERE user_id = ?", [$_COOKIE['id']]);
             if ($this->checkHash($user, $hashes) === true) {
-                $this->layout = "loggedIn";
-                $this->set(['name' => $user[0]['login']]);
+                $this->set(['login' => $user[0]['login'], 'level' => $user[0]['level']]);
                 return true;
             }
         }
@@ -112,5 +106,23 @@ class App extends \vendor\core\base\Controller
             setcookie("hash", null, -1, "/");
         }
 
+    }
+    public function getLevel()
+    {
+        $model = new AppModel();
+        $model->table = "users";
+        $model->pk = "user_id";
+        $user = $model->findOne($_COOKIE['id']);
+        return $user[0]['level'];
+    }
+    public function getMenu($class)
+    {
+        $model = new AppModel();
+        $model->table = "pages";
+        $model->pk = "page_alias";
+        $pages = $model->findAll();
+        $menuFor = lcfirst(str_replace("Controller", "", substr($class, strrpos($class, "Controller"))));
+        $info = $model->findOne($menuFor);
+        $this->set(compact( 'pages', 'info'));
     }
 }

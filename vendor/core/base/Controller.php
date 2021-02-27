@@ -26,7 +26,11 @@ class Controller
      * @var array
      */
     public $vars = [];
-
+    /**
+     * Информация о уровне пользователя, false === не вошел
+     * @var boolean
+     */
+    public $level;
     /**
      * Конструктор класса, параметр - текущий маршрут. Присваивает значение текущему маршруту.
      * @param $route
@@ -39,7 +43,7 @@ class Controller
 
     public function getView()
     {
-        $vObj = new View($this->route, $this->layout, $this->view);
+        $vObj = new View($this->route, $this->layout, $this->view, $this->level);
         $vObj->render($this->vars);
     }
 

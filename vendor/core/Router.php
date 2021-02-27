@@ -74,7 +74,15 @@ class Router {
                 $action = toLowerCamelCase(self::$route['action'])."Action";
                 if(method_exists($cObj, $action))
                 {
-                    $cObj->signIn();
+                    if($cObj->isLoggedIn())
+                    {
+                        $cObj->layout = "loggedIn";
+                        $cObj->level = $cObj->getLevel();
+                    }
+                    else
+                    {
+                        $cObj->signIn();
+                    }
                     if(isset(self::$route['alias']))
                         $cObj->$action(self::$route['alias']);
                     else

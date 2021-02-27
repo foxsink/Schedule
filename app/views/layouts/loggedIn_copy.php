@@ -14,8 +14,16 @@
 
 </head>
 <body>
+<header>
 
-            <h3><?php echo $login;?></h3>
+
+</header>
+<div class="main">
+    <div class="menu-main">
+        <div class="menu-header">
+            <h3 class="header"><?php echo $login;?></h3>
+        </div>
+        <div class="menu-body">
             <form method="post" action="/logout/">
                 <div>
                     <input type="submit" value="Выйти!">
@@ -23,7 +31,7 @@
             </form>
             <?php if (!empty($pages)):?>
                 <?php foreach($pages as $page):?>
-                    <?php if ($page['page_publish'] !== 'F' && $page['page_level'] >= $level):?>
+                    <?php if ($page['page_publish'] !== 'F'):?>
                         <div>
                             <br>
                             <a href="/<?php echo $page['page_alias']?>" ><?php echo $page['page_title']?></a>
@@ -36,11 +44,20 @@
                     <?php endif;?>
                 <?php endforeach;?>
             <?php endif;?>
-        <div>
+        </div>
+    </div>
+    <div class="content-main">
+        <div class="content-header">
+            <h3 class="header"></h3>
+        </div>
+        <div class="content-body">
             <?php
             echo $content;
             ?>
         </div>
+
+    </div>
+</div>
 
 </body>
 </html>

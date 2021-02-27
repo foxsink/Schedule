@@ -88,25 +88,50 @@ header {
 }
 .content-body {
     display: flex;
-    flex-direction: column;
+    flex-direction: unset;
+    flex-wrap: wrap;
     width: 100%;
     height: 100%;
     margin-right: 10px;
 }
 .content-body-schedule {
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-direction: column;
     width: 100%;
     height: 100%;
     margin-right: 10px;
 }
-.content-body-schedule-one {
+.content-body-schedule-header {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+.schedule-body {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+}
+.content-body-schedule-body {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    margin-right: 10px;
+}
+.content-body-schedule-piece {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    width: 20%;
-    height: 100%;
+    width: 40%;
+    height: 40%;
+    margin-right: 10px;
+}
+.container-schedule {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 50%;
     margin-right: 10px;
 }
 .body-logo {
