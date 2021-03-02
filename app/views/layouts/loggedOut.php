@@ -17,45 +17,24 @@
 //            } ?>
 </head>
 <body>
-<header>
-
-
-</header>
-<div class="main">
-    <div class="menu-main">
-        <div class="menu-header">
-            <h3 class="header">Вы не вошли</h3>
+    <h3>Вы не вошли</h3>
+    <form method="post" action="/login">
+        <div>
+            <p>Введите логин</p>
+            <p><input maxlength="25" size="40" name="login"></p>
         </div>
-        <div class="menu-body">
-            <form method="post" action="/login">
-                <div>
-                    <p>Введите логин</p>
-                    <p><input maxlength="25" size="40" name="login"></p>
-                </div>
-                <div>
-                    <p>Введите пароль</p>
-                    <p><input type="password" maxlength="25" size="40" name="password"></p>
-                </div>
-                <div>
-                    <input type="submit" value="Войти!" name="btn-submit">
-                </div>
-            </form>
-
-
+        <div>
+            <p>Введите пароль</p>
+            <p><input type="password" maxlength="25" size="40" name="password"></p>
         </div>
+        <div>
+            <input type="submit" value="Войти!" name="btn-submit">
+        </div>
+    </form>
+    <div>
+        <?php
+        echo $content;
+        ?>
     </div>
-    <div class="content-main">
-        <div class="content-header">
-            <h3 class="header"></h3>
-        </div>
-        <div class="content-body">
-            <?php
-            echo $content;
-            ?>
-        </div>
-
-    </div>
-</div>
-
 </body>
 </html>

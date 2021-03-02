@@ -11,7 +11,10 @@
             echo $info[0]['page_title'];
         } ?></title>
 
-
+<!--    --><?php //if (isset($info))
+//            {
+//                echo $info[0]['page_alias'];
+//            } ?>
 </head>
 <body>
 <header>
@@ -21,29 +24,24 @@
 <div class="main">
     <div class="menu-main">
         <div class="menu-header">
-            <h3 class="header"><?php echo $login;?></h3>
+            <h3 class="header">Вы не вошли</h3>
         </div>
         <div class="menu-body">
-            <form method="post" action="/logout/">
+            <form method="post" action="/login">
                 <div>
-                    <input type="submit" value="Выйти!">
+                    <p>Введите логин</p>
+                    <p><input maxlength="25" size="40" name="login"></p>
+                </div>
+                <div>
+                    <p>Введите пароль</p>
+                    <p><input type="password" maxlength="25" size="40" name="password"></p>
+                </div>
+                <div>
+                    <input type="submit" value="Войти!" name="btn-submit">
                 </div>
             </form>
-            <?php if (!empty($pages)):?>
-                <?php foreach($pages as $page):?>
-                    <?php if ($page['page_publish'] !== 'F'):?>
-                        <div>
-                            <br>
-                            <a href="/<?php echo $page['page_alias']?>" ><?php echo $page['page_title']?></a>
-                            <br>
-                            <?php echo $page['page_h1']?>
-                            <br>
-                            <?php echo $page['page_content']?>
-                            <br>
-                        </div>
-                    <?php endif;?>
-                <?php endforeach;?>
-            <?php endif;?>
+
+
         </div>
     </div>
     <div class="content-main">

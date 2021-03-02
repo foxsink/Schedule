@@ -65,7 +65,7 @@ function generateCode($length = 20) {
 
     return $code;
 }
-function getCurrentMonth($offset = 0)
+function getCurrentMonthInRussian($offset = 0)
 {
     $arr = [
         'январь',

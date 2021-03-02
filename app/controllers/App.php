@@ -125,4 +125,12 @@ class App extends \vendor\core\base\Controller
         $info = $model->findOne($menuFor);
         $this->set(compact( 'pages', 'info'));
     }
+    public function getUser()
+    {
+        $model = new AppModel();
+        $model->table = "users";
+        $model->pk = "user_id";
+        $user = $model->findOne($_COOKIE['id']);
+        return $user;
+    }
 }

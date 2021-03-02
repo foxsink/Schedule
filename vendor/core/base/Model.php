@@ -42,4 +42,19 @@ class Model
         $sql = "SELECT * FROM {$table} WHERE {$field} LIKE ?";
         return $this->pdo->query($sql, ['%' . $str . '%']);
     }
+    public function insertInto($arrKeys, $arrValues, $table = '')
+    {
+        $table = $table ?: $this->table;
+        $arrKeys = implode(", ", $arrKeys);
+        $prepare = '';
+        for ($i = 0; $i < count($arrValues); $i++)
+        {
+            if($i === 0)
+                $prepare .= "?";
+            else
+                $prepare .= ", ?";
+        }
+        $arrValues = array_values($arrValues);
+        $this->pdo->execute("INSERT INTO {$table} ({$arrKeys}) VALUES ({$prepare})", $arrValues);
+    }
 }

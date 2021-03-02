@@ -5,6 +5,7 @@
                 <br>
                 <?php echo $manager['manager_name'] . " "?>
                 <?php echo $manager['manager_sname']?>
+                (<?php echo $manager['manager_login']?>)
                 <br>
             </div>
     <?php endforeach;?>
@@ -17,6 +18,10 @@
     <div>
         <p>Введите Фамилию</p>
         <p><input maxlength="25" size="40" name="manager_sname"></p>
+    </div>
+    <div>
+        <p>Логин для менеджера</p>
+        <p><input maxlength="25" size="40" name="manager_login"></p>
     </div>
     <div>
         <input type="submit" value="Добавить!" name="btn-add-manager">
